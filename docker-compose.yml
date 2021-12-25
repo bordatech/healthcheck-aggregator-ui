@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  basketservice:
+    image: ${DOCKER_REGISTRY-}basketservice
+    build: 
+      context: ./src/BasketService
+      dockerfile: Dockerfile
+  productservice:
+    image: ${DOCKER_REGISTRY-}productservice
+    build:
+      context: ./src/ProductService
+      dockerfile: Dockerfile
+  healthcheckservice:
+    image: ${DOCKER_REGISTRY-}healthcheckservice
+    build:
+      context: ./src/AspNetCore.HealthChecks.Aggregator.UI
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"
+        
