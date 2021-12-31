@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace BasketService
 {
@@ -24,7 +25,7 @@ namespace BasketService
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions()
+                endpoints.MapHealthChecks("/health", new HealthCheckOptions()
                 {
                     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                 });
